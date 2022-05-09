@@ -1,0 +1,63 @@
+IAM
+Identity and Acess Management == Global service
+
+ROot account = el padrote
+create users -> IAM 
+
+
+You can create groups [user1,user2,user3]
+Group:
+	G1: A1,A2,A3
+	G2: B1,B2
+	G3: A1,B1
+User: x //no group :<
+
+Groups only contain users,not other groups
+
+Permissions = policies [json]
+IAM Policy 
+
+Policies =  define permissions of the users
+
+Least Privilege Principle = don't give more permissions than a user needs
+
+
+IAM Service: [Global]
+Security: create a administrator users
+and don't use the root user unless something happen
+
+Account management: 
+->Users 
+->Add users
+
+YOu'll need to create an alias in order
+to acces as an IAM user
+and will ask you to change the password :o
+
+
+Structure of an IAM Policy
+Version: number : policy language version
+Id: identifier for policy [opt]
+Statement: one or more individual statements [req]
+
+Statements:
+	- Sid: identifier for statement [opt]
+	- Effect: wheter the statement allows or denies acces [Allow,Deny]
+	- Principal:  account/user/rol which this policy applied to 
+	- Action: List  apis calls allowed or denied based on the effect
+	- Resource:  list of resources to which actions will be applied to 
+	- Condition: conditions for when this policy is in effect [op]
+	
+Effect: si
+entonces tienes estas acciones: ['x1','x2','x3']
+Resources:	a donde recaen las acciones en donde serán aplicadas las acciones
+
+Acciones aplicadas a resources en base el effect de allow o deny
+
+
+
+
+
+
+
+
