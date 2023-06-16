@@ -1,0 +1,297 @@
+***************Cloud concepts***************
+Cloud Computing: network servers hosted on internet to : store, manage and pricess data rather han a local server o pc
+on premise: you own, you hire, you piad rent, risk
+cloud provider: some else own, se hire, se pay, you configure cloud services and code 
+
+Evolution of cloud hosting:
+dedicated server -> virtual private server -> shared hosting -> cloud hosting
+dedicated server: one phyisical macihne dedicated to a sinle businees runs a single web app/site. expensive, hgh maintenance high security
+vps: one phyisical machine dedicated to a sinle business, the phyisical machine is virtualized into sun machines runs multiple web apps/sites utilization and isolation of resources >>
+shared hosting: one physical machine, sharedby hundred of businesses 
+relies on most tenants under utilizing their resoruces, very cheap limited funconality ppor isolation
+cloud hosting :  multiple phisical machines that at as a 1 system, the system is abstracted into multiple cloud services, flexiler scalab,e cost-effective, secure, high configurabiliy
+
+SQS simple queue service was the first servie launched in aws
+
+CSP: Cloud service provider
+company which privdes multiple cs those cloud services cahn be chained to crate cloud architecture
+the cs can be acces via single unified api : AWS API, metered billing : based on usage pay for minute, hour, etc
+moniroting track   : aws cloudtrail , has iaas offering (networking, compute, database,storage), automation via Infrasctructure as code : you code the behaviour
+Route53  - ELB - EC2 - RDS - SES -QUIcksight s3
+domain name , load balance, web server postgres, send email analytics, store images
+
+Magic Quadrant MQ: series of market research  published by IT consulting firm gartnet demonstrate market trends, direction and maturity
+cloud core :  compute : virual computer run application program and code, networking : defining internet connections or netework isolation between services , storage _ virtual hard driver to store files,  database : virtual datbase tto store data, or database for general puropse web-applciation
+amazon has 200  > cs
+
+Computing Evolution: 
+Dedicated: physycal server wholly utilized by a single customer, guess your capacity, overpay, cant vertical scale, replace is very difficult, limtied by your host oeprating sistem. multippe apps can result in conflicts.
+: why woudl u use  :  maybe high performance need theses cmputer close together
+
+Virtual machine: run a machine within a marchine 
+Hypervisor: softwre layer that let you run the VMs virtual machine
+physical servers shared by multiple customer, pay fraction of the server, overpay for underutilized virtual achine
+limited for guest operating system, mltiple apps on a single virtual machine an result in conflictsç
+easy to export o import images for migration easy to vertical or horizontal scale 
+	
+Container: 
+virtual machine running multiple container
+docker daemon is the name of the software layer that lets you run multiple container
+maximize the capacity it's flexible
+container share same underliying OS
+multipleapps running : not cause conflict during resource sharing
+trade-off: lot more work to maintain
+
+Functons or serverless compute:
+the csp maintain those containers
+you upload a piece of code and choose the amount of memory, duration and that stuff, only responsibele for code and adata nothing else
+very cost-effective only pay for the time code isrunning, VMs only run when there is code to be execured
+trade off: cold start sometimes litle bit 
+
+
+Types of cloud computing:
+Saas : customer : you dont care about anything just the program,spftware runs it's all in the service providder csp
+PaaS :  developer : deployment and management of the app, dont worry aobut provisioning , confiuring or understanding hardware or OS
+Iaas : adminsitrator : building blocks, those services to create architectures, provice network, compute, storage database, dont worry about it staff, hardware, data center etc.
+
+
+Cloud computing deployment models: 
+Public cloud : eveyrthing is on the csp side, the projhect the workload eg: amazon web service the internet, cloud native : term before
+private cloud : everything built on companies datacenter known as on premisa, ej openstack: data cener resides
+hybrid cloud : using both public and private can be a direct connection , vpn connection there's a bridge between.
+cross cloud or multicloud : multiple cloud providers using azure arc, amazon eks, and gcp kubernetes engine. csp services-
+
+deployment model use cases: 
+public cloud: fullly utilizing cloud computing, companies that are starting out today, leap from vps to csp, startups saas offerings, new projects
+hybrid:  orgs that started with their own data center cant fully move to cloud due to effort of migration or security : banks, fintechm investment magagement, large profeesional service providers:
+on premise private cloud:  cannot run on cloud strict regulatory compliance size of org :: pbulci sector super sensitivite data, large enterprise with heavy regulation
+
+AWS service : IAM Identity access management  
+there are services that work on some regions other are global :  cloudfront, s3
+
+Burning platform : when a  company abandons old technology for new technology ,imcertaomty pf sucess motivated by fear  -> digital transformation
+
+Evolution Computing Power:
+General COmputing, GPU Computing, Quantum computing 
+AWS : GC : EC2 , GPU Computing : AWS Inferentiare inf1 AI ML , Quantum :  AWS Braket caltech  
+ec2 : e c*2 =  Elastic compute cloud 
+s3 : 3*s = simple storage service
+
+Benefits of cloud:  why an org should adop or migrate to utilizing public cloid
+agility : increase speed and agility
+pay as you go piricing : trade capital expense for variable expense
+economy of scale: benefit from massive ecnomies of scale
+global reach: go global in minutes
+security
+reliability: stop spending money on running and maintaning
+high abailabilityy
+scalability: benefit from massive economies of scale
+elasticity
+
+Six advantages to cloud: 
+
+1- Trade capital expense (caex) to variable expense (vaex) : yoou pay for what you use, no hay pago inicial theres no upfront cost, can pay in seconds, minutes hours
+2- benefit from massive economies of scale : sharing cost with other customer to get unbeatable savings, hundreds of thousand of customer utilizing a fraction of a server
+3.- stop guessing capacity : Scale up or down to meet the current need. Launch and destroy services whenever.
+4.- increase speed and agility : launch resoruces within a few cicks in minutes insetead of waiting days or weeks of yout it to implement the solution on premise
+5.- stop spending money on running and maintaining data centers : focus on your own customers developing and configuring your applications,instead of ops like racking tacking and powering servers
+6.- go global in minutes :  deploy your app in multiple regions around the world with a  few clicks : low latency and better experience for customer
+
+***************Global Infrastructure**************************
+globally distributed hardware and datacenters that are physicall networked together to act as a one large resource.
+
+31 Regions 
+99 Availability zones
+108 direct connection locations
+450  points of presence
+32 local zone
+29 wavelength zones
+
+Regions: geographially distinc locations minimum of 3 AZ , per y region is physically isolated fron and indepent oter every region in terms of location, power water supply
+us-east:  new services become available first there, not all services are avaialble in al regions, cost p region
+when choosing a rgion: regulatory compliance, cost of aws services, services availables, latency or distance to my end users.
+
+Availability zones: physical location made up of one or more datacenters
+datacenter: hundreds of thousands of computers
+region: contain 3 azs
+datacenter : situated each other diff buildings close enough to provide low latency
+common practice to run workloads in at least 3 azs to ensure services remian avilable in case of one or two datacenters fail (high availability)
+azs: region code follow by a letter eg: us-east	-1a
+subnet related to availability you never choose an az when launching resourcesyou always choose a subnetwhich is then associate to an azs
+example: region us-east-1 representing two AZs : us-east-1a, us-east-1b, and region us-west-1 and subnet us-west-1-a
+En resumen, las subnets se utilizan para dividir una VPC en segmentos más pequeños, y las availability zones son las ubicaciones físicas donde se implementan estas subnets.
+
+Fault domain
+Is the ability to stop the propagation if a  service fail and do not go to cascade
+if a critical device or system fails the puporse of this is fault domain is that if fails it will not cascade outside that domain limiting the damage possbible.
+
+Fault level :  collection of fault domain
+un fault domain peude ser: un server , un rack, un datacenter, un room, the entire building,  is up to the CSP to define that shit
+
+amazon region isolated to another amazon region, AZs ois also isolated , AZs ina  region are connected via low latency links
+each AZs is designed as an independent failure zone.
+
+Multi az, when a company is partitioned across AZs are better isolated and protected fro issues as power outages, lightning strikes, tornadoes, earthquake,and more 
+
+
+Amazon global network* 
+Interconnections betweeen aws global infraestructure -> referred as backbone of aws
+private expressway where things move very fast between datacenters
+-Edge locations: can act as on and off ramps to the aws global network
+i.e : aws global accelerator ; aws s3 transfer acceleration ::: use edge location as an on ramp to qucikly reach aws resources in other regions
+i.e: aws cloudfront ;cdn; - edge location as an off ramp,to provide at the edge storage and compute near the end user
+
+VPC endpoints. ensure that your resources stays within aws network and not go to the public internet
+	
+POPS : points of presence : intermediate location between aws region and the end user : could be a datacenter or collection of hardware
+aws : a pop is  a data center owned by aws or a trusted partnet for  content delivery of expediated upload
+pop resources are: edge location; regional edge caches
+ejemplo : S3 Bucket [el origen] -> regional edge cache 2 - egde location 1, edge location 2 y cada uno a un end user
+edge location : son datacenter that hold cached (copy) on the most popular files : web, pages, videos etc [cdn]
+so that the distance to the end user are reduce it soudns like a cdn to me [dns es traduccion de nombre de dominio en direcciones ip para uqe los monos se acuerden]
+
+Regional edge locations data centers that hold much lager caches of less popuplar files, to reduce a full round trip and also reduce the cost of transfer fees.
+
+Global infrastructure tier I:
+pops live at the edge/intersection of two networks
+tier 1 network is  anetwork that can reach every other network on the internet without purchasin IP transit or payingfor peering.
+AZs are all redunantly connecto to multiple tier-1 transir providers
+
+AWS services use pops for content delivery
+Service: Amazon cloudfront : condent delivery nework service that:
+you points your website to cloudfront so that it will route request to nearest edge location cache
+choose a origin shuch a sweb server or storage that will be source of cached
+caches contents 
+
+Service: amazon s3 transfer acceleration : generate special url , to users to upload files no a nearby edge location.once is uploaded it canmove much faster within aws network to reach s3
+
+Service: aws global acceleerator: find optimal path fron end user to web server. deployed within edge locations; you send user traffic to an edge location instead directly to your web applciation
+ejemplo : tienes corriendo una app en us-1 y no tienes tiemp para setear la ifnraestructura en otras regiones este lo eniendes y ya tienes un boost xd 
+Un ejemplo de uso de AWS Global Accelerator podría ser una empresa que tiene una aplicación web con usuarios en diferentes regiones del mundo
+mejora el rendimiento y la disponibilidad de aplicaciones con tráfico global al enrutar automáticamente las solicitudes de los usuarios a la región de AWS más cercana a ellos.
+
+
+Service: AWS Direct connect: private/dedicated connection between your datacenter office co location and aws
+has 2 very fast network connections - lower bandwith 50MBps -500MBp and  Higher bandwith  : 1GBps or 10GBps
+--helps reduce network costs and increase bandwith throughpput  great for high traffic networks
+provide more consisten network experience 
+
+Direct connections locations are: trusted partnered datacenters you can set up a dedicated high speed, low latenciy connection from your on premise to aws
+
+AWS Local Zones: data centers located very closely to a densely opulated area single digit milisecond low latency eg 7ms for that area
+donde hay un chingo de trafico, de gente, y este local zones son dataecnters que responden rapido y en un digito de milisegundo alta demanda:, media y entretenmiedno, machine largein
+
+Los angeles california fue la primer local zone:
+
+wavelength zones: edge computing on 5g network , apps have ulra low latenci being close as possible to the users
+friends with various telecom ::: oyu create a subnet tied to  a wavelentgh zone and you can lunch your VMs to the edge of the targeted 5g networks
+zonas de baja latencia, y alta velocidad.
+
+Data residency
+-Data residency: donde esta el oganizatio or cloud resource reside:
+-compliance boundaries: legal requirement by government or oganization where the data and cloud resource are allowed.
+-what is data soverienty: that data is subject to the laws and regulations of the country or region where it is stored or processed.
+
+goverment and private companies i think:
+AWS outposts :  brings AWS services to your on-premises environment or co-location facility. It allows you to use familiar AWS tools and services to build and run applications locall AWS Outposts es una solución física proporcionada por AWS que se instala en tu entorno local o en una instalación de co-ubicación.
+AWS Config is a service that provides a detailed view of the configuration of AWS resources in your account. : Assess audit and evaluate the configuration of your aws resources for compliance , secuiry and oernance purposes
+IAM Policies : deny acces to specific aws regions a service control policy SCP are permissions applied organization wide 
+
+
+*AWS  for government 
+aws acheive this by meeting regulatory compliance programs alogn with specifc governance and security tools controls.
+aws has special regions for us regulation called : govcloud
+
+*Gov Cloud US, only used in US and those who has the root acc who pass a screning process.
+allow customer to host sensitivte ontrolled unclassified information and othertypes of regulaed workloads 
+offers an  isolated region to run fedRAMP, federal risk and  authorizarion management program 
+
+*AWS in china  , banned logol need id, has is own domain
+
+Global Infrastucture - Sustainability
+1.- renewable energy , 2025 - renewed energy
+2.- clodu efficiency 3.6 times energy efficient
+3.- water stewardship . water, water recyle, water no potable for cooling. 
+
+*AWS Ground station: lets you control satellite communications  : ie. weather forecasting 
+ejemplo una compañioa llega  auna cuaerdo de tomar fotos deun  area en especifico usan aws ground station, luego descargan las imagenes en s3 bucket :D
+
+
+*AWS Outposts sumarize: rack of servers running aws infrastructure on your physical location : on premise: rack :: 42u 1u 2u 
+
+*Cloud architecture techonologies:
+Solutions architect: is more like open goes meet, look the problem design and create a solution for a specific tech solutions
+clodu architect: design architecture, meeting the goal implement, security y un ejemplo seria la trasnciion de una empresa a lanube, este we diria ah mejor esta nube o esta con estos servicios y con esta segurida y bllablalbalbla.
+Imagina que una empresa de comercio electrónico desea lanzar una nueva plataforma en línea utilizando los servicios de AWS. Un Solutions Architect en AWS sería responsable de diseñar la arquitectura de la solución y asegurarse de que cumpla con los requisitos comerciales y técnicos de la empresa.
+
+El Solutions Architect colaboraría con los equipos de desarrollo, operaciones y negocio para comprender los objetivos y requerimientos del proyecto. Basándose en esa información, diseñaría una arquitectura en la nube utilizando los servicios de AWS que mejor se ajusten a las necesidades de la empresa.
+Por ejemplo, el Solutions Architect podría diseñar una arquitectura utilizando Amazon EC2 para alojar los servidores de la aplicación web, Amazon RDS para gestionar la base de datos, y Amazon S3 para almacenar los archivos multimedia. También podría implementar servicios de escalado automático y equilibrio de carga para garantizar un rendimiento óptimo y alta disponibilidad de la plataforma.
+El Solutions Architect tendría en cuenta aspectos como la seguridad, la resiliencia, la eficiencia y la optimización de costos al diseñar la arquitectura. También podría integrar otros servicios de AWS, como Amazon CloudFront para la distribución de contenido, Amazon Redshift para el análisis de datos, y AWS Identity and Access Management (IAM) para gestionar los permisos de acceso.
+
+Supongamos que una empresa desea migrar toda su infraestructura de TI a la nube de AWS para aprovechar los beneficios de escalabilidad, agilidad y costo. Un Cloud Architect en AWS sería responsable de diseñar la arquitectura de la nube y liderar la migración.
+El Cloud Architect analizaría la infraestructura existente, incluyendo servidores, redes y sistemas de almacenamiento, y diseñaría una arquitectura en la nube que aproveche los servicios y capacidades de AWS. Esto podría implicar la implementación de instancias de Amazon EC2, redes virtuales, almacenamiento en Amazon S3 o EBS, y servicios de base de datos como Amazon RDS o Amazon DynamoDB.
+El Cloud Architect también consideraría la seguridad de la infraestructura, asegurándose de configurar grupos de seguridad, implementar políticas de acceso y utilizar servicios de seguridad de AWS como AWS Identity and Access Management (IAM) y AWS Web Application Firewall (WAF).
+Una vez diseñada la arquitectura, el Cloud Architect sería responsable de coordinar y liderar la migración de la infraestructura existente a la nube de AWS. Esto puede incluir el rehosteo de servidores, la refactorización de aplicaciones para aprovechar los servicios gestionados de AWS, o incluso la reconstrucción de sistemas en la nube.
+
+Un Cloud Architect se enfoca principalmente en diseñar arquitecturas en la nube y construir infraestructuras escalables y eficientes utilizando los servicios y recursos de la nube. Son expertos en tecnologías y servicios en la nube, así como en temas relacionados con la seguridad, escalabilidad, disponibilidad y optimización de costos en la nube.
+Un Solutions Architect, por otro lado, se enfoca más en comprender las necesidades y requisitos específicos de los clientes, y diseñar soluciones tecnológicas que cumplan con esos requisitos. Esto puede implicar trabajar con una variedad de tecnologías, incluidos servicios en la nube, pero también puede abarcar otros aspectos como integraciones de sistemas, arquitecturas de aplicaciones, optimización de rendimiento y más.
+
+HighAvailability: your service to remain avaialblme no single point of failure. aranteed service is up
+ELASTIC LAOD BALANCER: allows you to 	evenly distribute traffic data to multipli servers in one or more datacenters, if a datacenter becomes unhealthy or damaged, this brother will re route the ttraffic to the healthy datacenters with servers.
+
+HighScalability: nincrease your capacity based on increasing demand of traffic . memory and compiute power owo.
+theres 2 scales : vertical -scaling up- upgrade to a bigger server (CPU memory,storage)POWER UP, horizontal - scaling out- add more server of same size. BIGGER STRONGER , 
+VERTICAL : power of 1 machine
+horizontal: more machines shared workload more machine more help more power more stronger 2>1 >:)
+
+
+HighElasticity: AUTOMATICALLY increase or decrease capacity based on the current demand of traffic.
+Scaling in : less take 1 or more servers, scaling out: add 1 or more servers :D
+*ASG Auto scalling groups* :add or remove servers based on hte metrics and rules that you provide
+
+Fault tolerant: shift traffic preventing chance of failure , focus on capcity to being resilence or resist failure and errors without interruptions
+RDS Multi az -duplicate database in another azs owo  - duplicate-clone OwO OwO
+
+High durability: capacity to recover after a failure prevent the loss of data DR Disaster Recovery  ie: *CloudEndure*, replicate your machines into a low cost staging area , in case of a data center fails
+
+Business continuity plan :is  adocument how business wil continue operating  - when a disaster happens what can are oyung 2 do
+Recovery point objective and recovery time objective RPO RTO.
+RPO : how much data are you willing to lose?
+TWO : how much time are you willing to go down?
+
+Disaster Recover Options:
+1. Back up & Restore: Hours
+2. Pilot light(data is replicated with minimal services running) : 10 min
+3. Warm Standby (Scaled down copy of infra ready to scale up): min
+4. Hot standby (multi-site active/active, basically double the cost, scaled up copy): real-time
+
+Elastic beanstalk : para setear cosas que probablemten manualmente seran varios ec2, esta madre tiene opciones y te setea ec2, load balancer, high availabilty y demas
+lo mismo con rds: it has options like muti az, which means point of failure, recovery etc OuO
+
+AWS API : application programm interface uses 2 
+AWS Managament console: web based build manage and monitor everything  clickops: operations via clicks
+You can interact AWS via powersell aws toolf or powershell ouo
+ARN: identify for aws resource  : uniquely. resource id could be a name or a number 
+ie: arn:partition:service:region:account-id:resource-id
+ie: arn:partition:service:region:account-id:resource-type/resource.id
+ie: arn:partition:service:region:account-id:resource-type:resource-id
+can include stars
+
+AWS CLI : command line interface , single o multiline
+the aws clis  apython  executable program , you can installit on your cli alaaa
+
+AWS Software development kit: collection of osftware development tools in one installable package 
+AWS SDK : java, python ruby etc 
+
+Infrastructure ascode IaC
+write configuration script to atumate crreating updating or destryoying cloud infrsatructure.
+IaC is a blueprint[plantillas ya hechas] of rou infrsacutrcute also allows you to easily share version or inventory of your cloud ifnrastructure
+AWS Has - > AWS Cloud Formation and AWS Cloud Development Kit
+CloudFormation is a service that allows you to define and deploy resources in the cloud using templates, while CDK is a development tool that enables you to define resources using code in popular programming languages.
+Cloud formation : json or yml EC2instance  type: Properties - - 
+CloudFormation is a collection of related resources and configurations that are created and managed together as a cohesive unit. 
+cdk 1st langagueprogramming  : typrscript 
+
+acces keys: key and secret  it's store in .aws/credentials
+
+aws cloud shell:  broser-based 

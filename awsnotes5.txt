@@ -1,0 +1,413 @@
+Logging services:
+CloudTrail: logs all API calls, between aws services : who can blame who created this bucket, who spin up that expensive ec2 instance
+who launched this sagemaker notebook, detect developer misconfiguration, malicious actors.
+
+cloudwatch: collection of multiple services : logs, metrics: represent a time oreded set of data points. events (eventbridge): trigger an event based on a condition.
+alarms: triggers notifications based on metrics, dashboard: create visualizations based on metrics
+
+Cloud watch alarm: 
+moniors a cloudwatch metric based on a defined threshold , when alarm breaches goes poutside the defined tthreshhold than it hcanges state
+Alarm states: ok: metric expression is within the defined threshhold, alarm : metric or rexpression is outside of the defined threshold, insufficient data: alarm has just started, metric is not available, not enough data 	 
+when changing state we can define action it should trigger, SNS, create a topic etc.
+metric: time oreded set of data points its a variable that is motniroed over time.
+comes with predefiend metrics.
+ec2 per instance mtrics: cpu utilization diskreadips, diskwriteops, networkin networkout. diswrite brytes, readbytes
+	 
+
+
+CloudTrail: used to monitor api calls and actions made on a aws acc.
+4w : where, when, who , what (region, resource, action).
+will collect logs or last 90 days via event history.
+if ypou need more than 90 days you need to create a trail. trails are output to s3 and do not have  agui like event history so for you to analyze a trail you would have to use amazon athena 	
+Threshold condition:defines when datapoints is breached
+Metric: the actual data that we are measuring 
+Period: how often it checks to evaluate the alarm
+datapoints to alarm: 1 data points is breached ina evaluation period going back 4 period 
+datapoints:represents the metric's measurement at a given point
+
+Log events:
+Log streams: sequence of events from application or instance being monitored 	 
+you CAN create log streams manually but generally this is automatically doen by the service you are using
+Lambda: logs streams named after the running instance
+ec2: named after the running instnace's instance id
+aws gue: named after glue jobs
+Log insights: interactively serach and analyze your cloudwach log data and has the folloding advantages.
+more robust filtering, then using the simple filter events in a log stream.
+supports al types of logs.
+is commonly used via the console to do ad hoc queries against logs groups.
+has is own language called- cloud watch log insights query syntax: a single request cna query up to 20 log groiuos.
+if the query pass 15 monutes, they are time out
+query result are available for 7 days 
+
+
+Machine Learning and AI Services:
+AI: machines that perform jobs that mimic human behaviour
+Machine Learning: machines that get better at a task without explicit programming
+Deep Learning: machines that have an aritifical nerutal network inspired by the human brain to solve complex problems.
+AI>ML>DL
+AWSServices:
+sage maker: build,train depliy ML models.(Apache MXnet on aws). tensorlflow, pytorch
+amazon sage maker : tag and validate data to train models
+amazon augmented ai: human intervention review service.	
+
+AI and ML services:
+CodeGuru: machine leraning code analysis service.
+amazon lex: conversion interface service: voice and text chatbots
+Apersonalize: real time recommendation service proucts
+amazon polly: text to speech service
+rekognition: image and video recgnition service
+amazon transcribe: speech to text
+textrack : extrct text for scanned documents
+amazon trnaslate: naturel machine learning translation service
+amazon comprehend: Natural language processor :  relaton shipp between texto to produce insight.
+amazon forecast:time series forecasting service 
+aws deep learning amis: pre installed with ppular deel leraning freameworks 
+aws ddee learning containers: docker iamges isntances pre install with popular deep eranin
+aws deep composer: musical keyboard
+deeplens: video camera that uses deep learning
+deep raer: toy cace car powered with ml to perform autonomus drive
+amazon elastic interfence : low cost gpu accelertion to ec2 instnaces to reduce the cost of running deel leraning inference up to 75%
+A fraud detector: fraud detection service fake acc, fake payment etc.
+A kendra: enterprise machine learning search engine service.	
+
+Big data and analytics service: 
+big data: massive volumes of structured/unstructured data that is so largo its dificul to move and process.
+
+Amazon athena: serverlss interactive query serice It can taebunch o csv or json files in s3 bucket and laod them into temporary sql table,s sso you can run sql queries.
+amazon cloud serach: tmanaged full text search srvice: add search to your website
+A elastic search service: full text search engine like cloudserach but more robust than it, requiresmore server and operational maintance
+A elastic map reduce: data processing and analysis it can be used for creating reports just like redshift but is more suited when you need to transform unstructured data into structured data on the fly
+Knesis data sreams: real time streaming data service : create producerd whichi send data to a stream, multiple consumers can consume data within a stream., use for real time analytics, clcik streams ingesting data frm a fleet of iot devices.
+kiesis firehose: severless and simpler version of data streams, you pay on demand base on how much dat ais consumed.
+kinesis dataanalytics: allows yu to run queies agains tada that is flowing through your real time stream so you canc reate reports 
+kinesis video streams: allos you to analyze or apply processing on real time streaming video
+Managed kafka services: fully managed apache kafa service similar to kinesus with more robust funcitonalities , buding real time streaming data pipelines and applications.
+redshift : peratbyse data warehouse , OLAp online analityc processing wkeep data hot, coplex query  great when generating analytics reorts from a alrge amount of data
+amazon quicksight: busines dahborad, create business dashboard to power business decision.
+aws datapipelines: automates the movement of data.
+aws glue ETL service moving data from one loc to another here you need to perform tranformation before the final destination. similar to DMS database migration but more robust.
+lake formation: centalized curated and secured repo that stores al your dara.repo that holds bast amount of raw data in its native format untilis needed
+data exchange: catalogue of third party datasets you can download for free subscribe or purcharse datasets.: eg: covid19, movie data, hsitorical weather etc.
+
+Amaozn quicksight:business intelligene dashboard that allows you to ingest data from various aws storage or databsae service to quickly visualize business data with minimal programming or data formula knowledge.
+uses SPICE : super fast parallel in memory calcuation engine, to achive blazing fast performance at scale 
+ucicksight ml insight: detect anomalies perform accurate forecasting
+quicsight q: ask question using naturl language on all your data receive answer in seconds
+
+aws well architedted framework:
+white paper created by aws to help customer build using best practices defined by aws.
+
+framework is divided into 5 sections: called pillars which address different aspect or lenses
+5 pillars: operational excellence security, reliability performance efficiency, cost optimization
+
+general definitions:
+operational excellent pillar: run and monitor systems
+security pillar: protect data and systems, mitigate risk
+reliability pillar: mitigate and recover from disruptions
+performance efficiency pillar - use comuting resources effecively
+cost optimization pillar- get the lowest price
+
+component- code configutaion and aws resource 
+workload - set of components that work togheter to deliver business value
+molestones - key changes of your architecture thorugh product life cycle
+architecture - how components work together in a workload
+technology portfolio -collection of workloads required for the business to operate
+
+amazon leadership principles:
+set of principles userd during compny decision-making, problem solving, simple brainstorming and hiring.
+customer obsesion, ownership,invent and simplify, are right a lot, learn and be curious, hire and develop the best, think big,bias for action, deliver results, scuess and scale
+
+general design principles:
+stop guessing your capacities needs : cloud computing you use as little or much basedon demand
+test systems at production scale: clone prod env to testing tear down testing not in use to save money
+automate to make architectural experimentation easier: using cloud formation with change sets, stackupdate and drift detection
+evolutionary architectures : eg ci/cd rapid or nighly releasys or if u use serlverless : lambdas forcing you to evolve 
+architectures using data: cloudwatch, cloudtrail
+improve through game days, simulate traffic on production or purposely kill ec2 instance to see test recovery
+
+anatomy of a pillar:
+design principles: list of design principles that need to be considered during implementation
+definition: overview of the best practices caterogies
+best practices: detail information about each best practice with aws service
+resorces: additional doc, whitepapers and vidoes to implement this pillar
+
+operational exellence:
+Perform operations as code: apply same engineering discipline you would to application code to your cloud infrastructure
+infrastucture as code
+
+make frequent small resversible changes: design workloads to allow components to be updated regularly
+eg;: rollbacks, incremental changes blue/gree, ci/cd
+
+refine opretiaons procedures frequently : look for continuos opportunities to improve your operations
+eg: use game gays to simulate traffic or event failure on your production workloads 
+
+anticipate failure: perform post mortems on system failures to better improve, write test code, kil prod srvers to test recovery
+
+learn from all operation failures: share lessons learnig in a kowledge base for operational events and failures across your entire organization
+
+Securiry:
+implement strong identity foundation: implement principle of least privilege PoLP. 
+enable traceability: monitor alert and audit actions and changes to your environment in real time 
+apply security at all layers. take defense in depth approach with multiple security controls for everything eg: edge network vpc, load balancing instances, os app code
+automate security best practices
+protect data in transit and at rest
+keep people away from data
+preparre for security events: incident mangamenet systems, investigate and recover rom incidenses
+
+reliability
+automatically recover from failure: monitor key performance indicatos, trigger automation when threshold is breache d
+test recover procedures: test how your wokloads fails and you validate your revoery procedures
+scale horizontallyto to ingcrease aggretate system availability: replace one large resource with multiple small resurces to reduce the impact of an single failure on the overall workload
+stop guessing capacity: request the reight size of resources on demand
+manage change in atuomation: IaC allow formal process to track and review infrastructure
+
+	 
+
+Perofrmance efficiency:
+Democratize advanced techonlogies: focus on product development rather than procurement
+go global in minutes: deploying workload in mltiple aws regions around hte wolrlds allows yo provide lower latency and a better experience for your customers at minimal cost 
+use serverless architectures: serverless architectures remove the need for you to run and maintain physical servers for traditional compute activies
+experiment more often: with virtual and automatable resources you can quickly carry out compartive testing 
+consider mechanical sypathy understand how cloud services are consued and always use the tehhnology approach that aligns best with your workload
+
+
+Cost optimization:
+implement cloud financial management: dedicate time and resources to build capability cloud financial management and cost optimization
+adopt a consumption model: pay only for the computing resources that you require and icnrease or decrease usage depending on business
+measure overall efficiency:	increasing output and reducing cost
+stop spending money on undifferentiated heavy lifting: aws does the heavy lifting data center ops like racking, stacking and powering servers
+analyze and attribute expenditure: identigy and cost of systems which then allows transparent attribution of it costs to individual workload owners 
+
+
+aws well architected tool: auditing tool to be used to asset your cloud workloads for alignment with aws well architected
+it's essentially a checklist to help you assembly a report to share with executives and key stake holders 
+
+AWS Architecture center: web portal contains best practices and reference architectures for variety of different workloads 
+
+TCO: total cost ownership
+financial estimte intendeted to help buyess and owners to determine the direct and indirect costs of a product service:
+hardwware, monitoring,, it personnel, taxes, licensing, security software etc
+
+creeating tco is useufl when: your cmpany is looking to migrato from on premise to cloud 
+
+capex: On premise: software license fees,  implementation traning, phyisical security, it personal, maintance
+opex : aws: subcription fees , implementation configuration training  
+75% savings  o:
+
+capex vs opex :
+capital expenditure: spending money upfront on physical infrastructure 
+server, storage, network, backup, disaster, datacenter, technical personal, you hae to guess upfront what you plan to spend
+
+operational expenditure :
+cost the customer only has to concerned with no physical costs : leading software , traning employees in clouds erices, paying for cloud support, billing based on cloud emtircs, compute, storage etc.
+operation expenses you can try a product or service without investing in eequipment
+
+shifting it personnel:
+a company is considering migrating their workloads from on premise o the cloud to take advange of the savings, there is a concern : "Doues cloud make it personnel redundant"
+sfhiting your IT team: company needs it personnel during the migration phase
+company can transition some roles to new cloud roles : networking to cloud networking 
+company may decide to take a hybrid approach so thell alway eed to have a traditonal it team 
+company can change emplyees activies from managing infrastructure to revenue generating 
+
+aws pricing calculator: free cost estimate tool that can be used within your web browser without the eed for an aws acc to estimate the cost of various aws services 
+you cann export your final estimate to a csv
+
+
+migration evaluator: formally known as tso logic, is an estimate tool used to determine an organization existing on premise cost so it can compare it agains aws costs for planned cloud migration
+uses agentless collector to collect data form your on premise infrastructureto extract your on premise costs
+
+VM import/export: import virutal machine into ec2, aws has import instructions for vmware, citrix, microsoft hyperv, etc
+1.- prepare your virtual image for upload, upload your virtual image to s3, use aws cli to import your image it will genrate an ami amazon machine iamge 
+
+database migration service: allows you to quickly and securely migrate one databse to another dms can eb used to migrat your on premise databse to aws 
+sources: mcirosoft, mysql mariadb, mongo, ibm , amazon rds, s3, aurora document db etc 
+target;: amzon redshift rd,s dynamo, aurora, oracle, microsoft redis etc 
+aws schema conversion tool is used in many cases to automaticlly convert a source databsae schema to a target database schema  
+
+cloud adoption framework caf: is a whitepaper to help you plan your migration from on premise to aws 
+organizes guidance into six focus areas focus, perspective 
+
+1. business : business managers, finance managers, how to update skill and organizational process to optimize business value as the move ops to the cloud
+2.- people: huma resources, staffing people managers, how to ensure competencies are in place at the appropiate time
+3.- governance: program managers, project managers, business analyst, how to ensure business governance in the cloud and manage measure cloud investments
+4.- platform: delvier and optimize cloud solutions and services
+5.- security: architecture deployed in the cloud aligns to the orgs security control requirements 
+6.- operations:  system health and relaibility during the move of ops to the cloud 	 
+
+aws free servieces: free forever unlike free tier that are up to point f usage of time
+IAM, amazon vpc, autoscaling, cloud formation, elastic beanstalk, ops works, aimpolyfy, appsync, codestar, organizations & consilidate billing, aws cost explorer
+however these aws services provison other services whhich may cost money 
+
+aws support plans:
+basic: email support only, for billing and account, 7 trusted adivosr checks
+developer :  no third party support (busines and enterprise yes), 7 trusted advisor checks, 29usdm
+business :  tech support via char, phone, all trusted advisor checks, 100usdm, production system impared <4h, 
+enterprise : tech support via chat, phone, all trusted advisor, 15000usd m ,production system impared 4< business crytical down 15m , personal concierge , tam techical account manager?yes
+
+developer : 29usd p month or 3% monthly aws usage whichever is greather
+business: 100usd p month, or 10% 0-10k, 7% 10-80k, 5% 80-250k, 3% over 250k 
+enterprise. 15000 mont, 10% 0-150, 7,5,3, 150-500,500-1M, over1M
+
+Techical account manager:  provides both proactive guidance and reactive support to help you succed with aws journey 
+only available on enterprise support tear, and this ones follows amazon leadership principles especially being customer obsessed
+it does. build solutions, ensure aws environgments remain operationally, develop trusting relationship with customer, detaoled review, solve variety ofproblems 
+
+
+AWS marketplace: digital catalogue with thousandof software listings from independet software vendors
+easily find, but test deploys software that already runs on aws
+the product can be free to use or can have associated charge, once you pay aws pay the provider.
+it can sell your solutioins to other aws customers
+products: ami, cloudformation template, saas offerings, 	
+
+consolidated billing: feature of aws organizations that allows you to pay for multiple aws accounts with one bill, aws treats all the acc in an org as if they were one acc
+you can designate one master account that pays the charges, of all the other memberacc
+is offered at no additional cost
+use cost explorer to visualize usage for cosolidate billing
+
+consolidate billing -bolume discounts: it has it for many services the more you use the more you save
+
+aws trusted advisor: decommendation tool which automatically and actively monitors your aws account to provide actional recommendations across a series of categories
+5 categories: 
+cost optimization: how can save mone
+perofmrance : how can improve perofmrance
+securitty : how we can improve security
+fault tolerance  : how cna we prevent a dsiaster of data los
+service limits :  are we going to hit the maximum limit for a service 
+
+basic and develoepr only has 7 trustead advisor checks those are:
+mfa on root account
+security groups- specific ports of unrestricted
+amazon s3 bucket permissions, ebs public snapshots, rds public snapshots iam user discourage the use of root acess
+service limites, all servie limites check are free 	
+
+Cost optimization: reserved instnaces optimization, low utilization amazon ec2 instnace
+idle load balancers, unassociated elastic ip address , amazon route 53 latency resource record sets
+
+performance : cloudfront alternate domain names. high utilization amazon ec2 instances, 
+security: cloudtrail logging, password policy, mfa on root acc, iam aceess key rotation
+
+fault tolarence: rds backup
+serviceliimits. asg, vpc ec2 limits 
+
+SLAs :Service Level Agreements
+expected level of service between a customer and provider, when a service level is not met and if customermeets its obligations under the SLA service level agreements, customer wil be eligible to receive compensation eg: financial or service credits
+SLI service level indicator: metric/measurement that indicates what measure of performance a cusomer is receiveng at a given time, sli metric could me uptime perofmrance availability latency etc.
+SLO: service level objective: objective that the provider has agreed to emet, SLOs are represented as a specific target percentage over a period of time
+eg: 99.55,99.99 , 99.(9)*9 nine nines, 99.9*(11) nine elevens 
+
+Service health dashboard: shows general starus of aws services
+an icon and details will indicate the status of each services
+
+Personal heath dashboard: provides alerts and guidance for aws events that might affect your environtment
+all aws customers cna acess the personal heath dashboard
+the personal heañth dashboard shows recent events to help you manage active events and shows proactive notifications
+use these alerts to get notified about changes that can affect your aws resources 
+
+aws abuse: aws trust & safety is a team that specifically deals with abuses ocurring on the aws platform for the following issues:
+spam: you are receving unwanted emails from an aws owned ip address 
+port scanning: logs show that one or more aws owned op address are sending packet to multiple ports on your server, thisis an attempt to discover unsecured ports 
+dos attacks: your logs shows that one or more aws owned ip addresses are used to flood porst on your resources with packets, you also believe that this is an attempt to overwhelm or crash your server or the software runnung on your server
+intrussion attempts: more aws owned ip addresses are used to attempt to log in in to your resources
+hosting prohibited content: evidence that aws resources are used to host or distribute prohibited content such as ilegal content or copyrighted content
+distributing malware: ypu have evidence that aws resoruces are used to distribute software that was knowingly created to compromise or cause harm to computers or machines that it's installed on
+
+for these cases you DO NOT open a aws support, you need to create an abuse ticket or fill out the report amazon aws abiuse form 
+
+aws free tier: use aws at no cost, for the first 12 months of signup, or free usage up to a certain monthly limit forever 
+ec2 webserver ;  t2.micro 750 hours per month for 1 year 
+rds.: mysql or postgres t2.db.micro 750 h x 1y
+elb: 750 hours per month for 1 year
+amazon cloudfront: homepage video, 50GB data transfer out in total for 1 year
+amazon connect: toll free number, 90 minutes of call time per month for 1 year
+amazon elasticache: caching cache.t3.micro 750 h x 1 y
+amazon elasticserach : full text search 750hpm x1y
+pinpoint: campaign marketing emails: 5000targeted user pmx1y
+ses simple email service: email sent by your web app 62k emails per mont forever
+aws code pipeline ci/cd 1 pipeline free
+aws codebuild: buolding code 100 build minutes pmonth foever
+
+aws credits: usd dollars on the aws platform, can be earned by : joining aws activate startup program, winning hackathons, participating in surveys
+aws credits generally have an expirity date attached to them
+can be used for mroe services but are exceptions eg: purchasing a domain via route53 (that domaincost outside aws costs for their infra )
+
+
+aws parnet network:is a global partner program for aws, joining the amazon parnet network apn, will open your organization up to business opportunities and allwos exclusive trainings and marketing events
+you can be: consulting partner (help companies utilize aws) or techonlogy partner(you build technology ontop of aws as a seervice offering)
+
+a partner belongs to a specific tier: select advanced or premier
+different tiers have diff annual fee commitments 
+diff tiers have diff knowledge requirements: aws certification , aws apn exclusive certification
+
+aws budgets: aws budgets: give you the ability to setup alet is you exceed or areapproaching your defined budget
+create cost usage and reverstaion budgets
+can eb tracket monthly quearterly or yearly levels 
+support ec2,rds,redshhift and elsasticcache reservations
+aws budgets can userd to forecase scosts but is limited compared to cost explorer or doing your analysis with aws costand usage reports along wiht business intelligence tool	 
+can eb easily amaned from the aws budgets dahsboar or via budgets api get notified by providing an email or chatbot and treshhold how close to the current or forecased budget 
+
+
+aws budget reports: used alongside aws budgets to ccreate and send daily,weekly monthly reports to monitor the performance of your aws budget, 
+
+aws cost and usage reports:
+Cost and usage reports: generate a detailed spreadsheet enabling you to better analyze and understand your aws costs 
+places the reports into s3,use athena to turn the report into a queryable databsae
+use quicksight to visualize oyur billing data as graphs 
+you can choose data by selecting hourly, daily, monthly, 
+the report wil contain cost allocation tags
+CUR cost and usage reports is stored in a csv gzip or parquet format in yur selected s3 bucket 
+
+Cost allocation task: are optional metadata that can be attached to aws resoruces so when you generate out a csot and usage report you can use that data to better analyze your data
+twto types of tags: user defined, aws generated
+
+billing alarms: can create your own alarms in cloud watch alarms t monitor spend, they are commonly called billign alarms
+for use them you need to turn on biling alerts. create a cloudwatch alarm and choose billing as your emtric 
+billing alarms aremuch more flexible than aws budgets, and ideal for more complex use case for monitoring spend and usage
+
+aws cost explorer: visuzlize understand and manage yotu aws cost over time 
+you can use forecasting to get an idea of future costs , can choose daily or monthly level of granularity you have lot of filter control 
+cost explorer shows up in us east-1	 
+ 
+AWS Pricing api: with aws you can programmatically acccess pricint information to get the latest price offering for services
+2 versios: query api- pricing service api via json
+bat api - price list api via html
+	
+you can also ssubcrite bo amazon simple notifcation srvice notification to get alerts when prices for the services change
+aws prices change periodically such as when aws cuts prices 
+
+
+defense in depth
+7 layrs of security:
+1 data: access t business and customer data and enceyption to protect data
+2 application : apps are secured anf ree of security vulnerabilities
+3 compute: access to virtual machines ports, on premise, cloud
+4 network: limit communication between resources using segmentation and acess control
+5 perimeter: distributed denial of service ddos protection to filter alrge scale attacs before they cna cause a denial of service for user
+6 identity and access: controlling access to infrastructure and change control
+7 physical: limiting access to datancer to only authorized personnel
+
+ZTM zero trust model 
+
+CIA Triad: confidentiality, integrity and availabilty CIA triad is amodel describinf the foudnation to security principles and theeir tradeoff relationship
+confidentiality: protect our data fro unathorized viewers, in practice: cryptographic keys to encript our data using keys to encrypt our keys, envelope encryption
+integrity: accuracy and completeness of dataa over its entire lifecycle practice: utilizing acid compliant daabase for valid transation atomicity, consistency, isolation, durability
+availability information ened to be made be available when eneded in practice: high availability, migratind ddos, decryption access
+the cia triad was first mentioned in a nist publication from 1977	
+
+vulnerability: hole or weakness in the application that can be design flaw or an imp bug ; OWASP
+buffer overfloe, improper data validation, least privilege violatin, memory leak 
+
+encryption: cryptography: practice and study of techniques for secure comunication in the presence of third parties called 
+encryption: process of encoding(scrabbling) informatin using a key and  acypher to store sensitive data in an unintelligible format 
+encryption akes in plaintext and produces ciphertext 
+cyphers: algorithm to perform encryption or decryption.
+ciphertext: ciphertext is the result of encryption performed on plaintext via na algorithm
+cryptographic key: key is avariable used in conjunction with an encryption algorithm in order to encrypt or decrypt data
+symmetric encryption: the same key is used for encoding and decoding eg: advance encryption standard AES	 
+asymetric encryption, one key to encode and another to decode eg: rivest-shamir-adleman RSA
+hashing and salting: 
+hashing function. accepts arbitrary size value and maps it to a fixed size data structure, hashing can reduce the size of the store value
+hashing is one way process and deterministic :  returns the same output for the same input
+popular hashing : md5, sha256 and bcrypt 
+salting: random string not known to the attacker that the hash function accepts to mitigate the deterministac nature of hashing function 	
+
+

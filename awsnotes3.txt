@@ -1,0 +1,102 @@
+*Other database services:
+Redshift : petabyte size- data warehouse online analytical procesing, OLAP, expensive keepind gata how, complex query = get that data back very fast
+when you to quicly generate analytics or reports from a large amount of data.
+
+ElasticCache is managed database of the in-memory and caching 
+redis or memcached. : when you need to improve the performance of application by adding or caching layer 
+
+Neptune: managed graph database. data is represented as interconnected nodes.
+When you need to understand the connections between data eg. mapping, social media relationships.
+
+Amazon timestreams: fully managed time series database. think of devices that send lots of data that are time sensitivite such as IoT devices: when you need to measure how things change over time
+
+amazon quantum ledger database: ledger database that provides transparent, immutable and cryptographically variable transacion LOGS.
+when you need to record history or financial activities that can be trusted. every record is immutable o:
+
+Database Migration Service DMS : is a database migration service. You can migrate from  on premise database to aws. from two database in different or same aws account using different sql engines. from an sql to nosql
+
+Networking services:
+Region : gregraphical location of your network 
+VPC : logically isolated section of the aws cloud where yo can launch aws services
+az: data center of your aws resources
+subnets: logical partition of an ip network into multiple, smaller network segments
+route tables: determine where network traffic from your subnets are directed
+internet gateway: enable acces to the internet
+nacls: acs a firewalls at the subnet level
+security groups: act as a firewall athte instance level
+
+hybrid networking services:
+aws virtual private network: consecure connection bewteen on premise, remote offices, mobile employeees
+direct connect : dedicated gigabi connection from n premise data center to aws very fast connections´
+PrivateLinks: vpc interface endpoints: keeps traffic within the aws network and no traverse the internet; traffis is secure.
+
+Virtual private cloud & subnets: }
+vpc. logically isolated section of aws network where you can launch your aws resources you chose a range of IPs using CIDR range
+CIDR Range of 10.0.0.0/116 = 65536 ip addresses
+subnets: logical partitions of an ip network intomultiple network segments, youre breaking your ip range for a vpc
+subnetd need to have a smaaller cidr range than to the vpc 	
+public subnet : can reach internet
+private subnet: cannot reach internet 
+
+Security groups vs NACLs:
+NACL netowrk acess control list: firewall at the subnet level (can allow and deny rules, blocka  specific ip address )
+security groups: IMPLICITY denies all traffic. firewall a tthe instance level: you create only allow rules
+you only ALLOW, allow an ec2 instance acccess on port 22 for ssh 
+
+EC2: highly configurable virtual server VM
+is resizable compute capcaity it takes minutes to launch new instances
+anything and everything on aws uses ec2 instnace underneath
+EC2 Instance families: combinations of cpu memory storage and network capacity 
+
+EC2 Instance types: instance size and instance family
+ec2 instances sizes generally double in price and key attributes, dobule next double price and sometimes dobule cVPU and ram
+
+Dedicated host vs dedicated isntances.
+Dedicated host: single tenant ec2 instanes deisgnet to ley tou bring your own license based on machines characteristics )
+ En resumen, dedicated instances se ejecutan en hardware dedicado, mientras que dedicated hosts son servidores físicos dedicados.
+dedicated hosts: you have visibility of phyisical characteristics : sockets, cores host ID
+
+EC2 Tenancy: 
+Dedicaded hosts : your server lives here and you have control of the phyisical attributes whol server
+dedicated instnace : slot or part of the server conviving with other but your dedicated will be the same
+default. you instance lives there until reboot it will be in other place	
+
+Elastic IP Addres: asocia una IP Estatica a un recurso porque cuado tu reinicias o termiasn y inciias un servicio obtiene una ip diferente alabestai carnal
+
+
+EC2 Pricing Models: 
+1.- On demans: least commitment : low cost and flexib,e, pay per hour or p second, cannot be interrupteb first time apps
+2.- stop : up to 90% request spare computing capacity flexible start and end times : biggest savings
+3.- reserved up to 75% steady state or predictable usage, commit to EC2 over 1 or 3 year 
+4.- Dedicated: : most expensive, dedicated servers, can be on demand or reserved or spot
+savings plans: save but can be user for more than just ec2 
+
+On demand: when laucnhign ec2 by default on demand: pay as you go payg , workload = short-tem, spikey, unpredictable
+hourly rate 
+Reserver Instances RI: term : longer term the greater the savings
+class: standard 75% reduced you can modify RI attribues ;;  convertible ;; up to 54% reduced pricing compared to on demand, you can exchange ri based on ri attributes
+payment: all up front,, partial upfront, no upfront (you are billed a dsicounted hourly rate )
+RI Attributes: 4ri attributes
+1.- instance type: example m4 large, t2 micro etc 
+2.- region: region  reserved is purchased
+3.- tenancy : multi tenand -shared- or singel tenand --dedicated-
+4.-platform te os windows/linux ec
+
+you can purchase for Region or Availability Zone:
+regional: doesn't reserve capcity ; discount -any - az in the region ; ri discount to instance usage ;  can qeuue pirchases
+zonal: reserves capacity; discount to selected az no flexibility; no instance size flexibility; instance usage for the specified instance only 
+
+YOu can only purchase 20 RI per region and 20 per AZ
+
+capacity reservations: theres is finite amount of server available lets say yo want to launch an specific ecc2 instnace but aws has run out of that server
+so Capacity Reservation : is  aserviec of EC2 that allows you to request a reserve of ec2 instance type for a specific region and az
+the reserved capacity is charged at the selected instance type's 
+Ri marketpalce:  allows you to sell your unused standard RI 
+
+Spot Instances: discount 90% , very low compute cost, AWS Batch is an easy anc vonenient way to use spot pricing
+Instances can be terminated by aws anytime, if the comptuign capacity is eneded or on demand customers example xd
+if tis terminated by aw you dont get charged for a partial hour of usage 
+if ypu terminated it you still get charged for any hour that ir 
+
+
+}

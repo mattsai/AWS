@@ -1,0 +1,152 @@
+Shared responsibility Model is a cloud security framework defines security obligations of the customer
+division of responsabilities bewteeeen customer anc csp
+In general, the CSP is responsible OF for the security "of" the cloud, which includes the underlying infrastructure, network, and physical security measures. They are also responsible for ensuring the availability and reliability of the cloud services they provide.
+and hte custoemr for configuring and managing their own resources IN the cloud
+OF and IN
+
+*Types of cloud responsability
+Applications, data, runtime, mdidleware, os, virtualization, servers, storage, networking
+On premise you are responsability for everything
+IaaS  :Customer responsible:  Applications, data, runtime, mdidleware, os CSP responsible:  virtualization, servers, storage, networking
+PaaS : Custoemr responsible : Applications, data,  CSP: the other
+SaaS:  CSP responsible: everything
+
+*Shared responsibility model compute
+*Iaas: Bare Metal : you can configure the entire machine, you get the whole machine (Customer: host os configuration, hypervsior, AWS: Physical machine)
+VM EC2 Elastic Cloud Compute. (Customer: guest os configuration, container runtime, AWS: Hypervisor physical machine)
+Containers: AWS Elasctic Container Service ECS : (Costumer. config contianer, deloyment storage of container AWS: os, hypervisor container runtime)
+*PaaS: AWS Elastic Beanstalk (Customer: uploading code, config environtment, deployment strats: AWS: servers,os,network storage, security)
+*SaaS: Amazon WorkDocs : customer: contents of docs, management of files, AWs: SEVERS, OS NETROWKIGN storage, security
+*FaaS:AWS Lambda customer: upload code , aws: deployment, container runtime, netwrkking, storage, physical machine
+
+Responsibility IN the cloud: if you can configure or sore it you are responsible for it
+respinbility OF the cloud: if you CAN NOT confiure is then csp responsible.
+En resumen, EC2 es un servicio de infraestructura en la nube altamente flexible y personalizable, mientras que Elastic Beanstalk es una plataforma administrada que simplifica el despliegue y la administración de aplicaciones web.
+
+
+Responsibility Model architecture:
+Tradivionsl/VMs : Elastic Beanstalk : PaaS , EC2 IaaS
+Microservices/Container: mix and matches languages  better utilization of resoiurces
+Fargate : serverless containers
+ECS/EKS  : Contaienrs
+Serverless/Functions: no more servers , just worry data and code
+amplify serverless framework lambda serverless architecture 	
+
+** Computing services
+
+EC2 : allows you yo launch VMs
+VMS: emulation of a physical computier using software, server virtualization allows you to easily create, copy resize, or migrate your server.
+multiply vms can run on the same physical server so you can share the cost with other customers when ww launch a VM we called an instance
+EC2 is highly configurable server you can choose AMI (Amazon Machine Image), such: aamount of CPUs, amount of memory ram, amount of network bandwith the os system
+ec2 is considered the backbone of aws the majority of aws services use ec2
+
+Virtual Machines:
+AWSService Amazon lighstail : managed virtual server service, friendly version of ec2 vms. i.e: when you need to launcha  linux or windows server but don't have much aws knowledge eg: launching wordpres
+
+Containers: virtualizing an os to run multiple workloads on a single os instance  generally used in micro service archiecture (when you divide your applicationinto smaller application thta talk to each other)
+Elastic container service ECS: contianer orchestratin service that support docker containers. 	
+Elastic container registry: ECR: respository for container images. in order to launch containers ypu need an image, and image jsut means a saved copy. a repository just means a storage that has version control
+  ECS es el servicio que te permite orquestar y administrar tus contenedores, mientras que ECR es el servicio donde almacenas y administras las imágenes de tus contenedores
+ECS Fargate: serverless orchestration container service : same as EC2 except you pay on demand per running container (iwith ecs you have to keep an EC2 server running even iy fou have no container running, )
+ECS es más flexible y te brinda un mayor control sobre la infraestructura subyacente, lo que puede ser beneficioso si deseas una mayor personalización y configuración. Fargate, por otro lado, es más fácil de usar y administrar, ya que te permite enfocarte en las aplicaciones y no en la infraestructura. 
+
+Serverless: when the underlying server are managed by aws you donw worry or configure servers
+aws lambda: serverless funcitons service:
+
+higher performance computing services:
+The nytro system: combination of dedicated hardware and lighweight hypervisor enabling faster innovation and enhanced security all new ec2 instnace types use the nytro system.
+	- nitro cards: specialized cards for cps, ebs and isntance storage
+	- nitro security chips: integrated into the motherboard
+	- nitro hypervisor lighweight hypervisor memory and cpu allocation bare metal like performance.
+Bare metal instnace: you can launch ec2 instance that have no hypervisoy so you can run worlloads directly on the hardware for maximum performance.
+the m5 and e5 ec2 instnace run bare metal.
+ bottlerocket: running containers on virtual machines or bare metal hosts.
+
+HPC high performance computing: cluster of hundreds of thousands of serers with fast connection between for boosting computing capacity.
+
+aws parallel cluster: aws support open source cluster management tool that makes it easy for you to deploy and manage HPC on aws.
+
+Edge and Hybrid computing services: 
+Edge computing: pushing computing workloads close to the destinion location near to end users so instead of sending data to the remote servers there are locations closer to this so the users can have low latency data.
+hybrid computing: run worloads on both promise data center and aws virtual private cloud
+
+aws outposts: physical rack of servers that you can put on your data enter.
+aws wavelentg: build and launch application ina  telecom datacenter.
+aws local znes: edge datacenres located outside of an aws region: you can user aws closer to end destination.
+when you need faster computing storage and databases in popuñated areas that are outside of an aws region.
+
+Cost and capacity management computing services:
+cost management: how do we save money 
+capacity managemenent how do we meet the demand of traffic and usages
+
+ec2 spot instances: ways yo sabe on computing by paying up in full o r partially by commiting to ayearly contractss
+aws batch: plans,schedules and executes yout batch computing workloads
+AWS compute optimizer. suggest how to reduce costs and improve performance
+
+Types of storage services:
+EBS: elastic block store block, data is split into evenly split blocks ; when you need a vitual hard drive attached to a VM
+AWS Elastic file system file : EFS: file is stored with data and metada multiple connections via network support multiple reads, writing when you need file share were multiple users or vms need to acces the same drive
+S3 simple storage service: object objectis stored with data medatada and unique id scales with limited no file limit or strogae limit
+
+EFS se utiliza para compartir archivos entre múltiples servidores o instancias.
+EBS se utiliza para almacenar datos asociados a una sola instancia.
+S3 se utiliza para almacenar objetos y acceder a ellos de forma sencilla desde cualquier lugar.
+En resumen, EFS es como una carpeta compartida en la nube, EBS es un disco duro virtual para servidores individuales y S3 es un almacén de objetos en la nube.
+
+S3 Simple storage service: data as objects  unlimited storage 
+you dont need to think about underlying inrastructure the s3 privdes an interface to upload and aceess data
+s3 object and s3 bucket
+s3 object: key, value, version id, metadata
+s3 bucket: buchet hold objjects buckets can aslo have folders which in turn hold object 
+you can store an individual object from 0 bytes to 5 terabytes 
+
+*s3 storage classes: offers a range of s3 storage classes that trade retrievel time accesibilit and udrability for cheaper storage
+s3 standard: fast 99.99% 11 9s durability replicated cross ar least 3 azs
+s3 intelligent tiering: uses ML to analyze object usage and determine the appopriate sotrage class
+s3 standard ia - infrqeuent access: still fast chepar if yu aceess file less than once a month 50% less than stantadrd
+s3 one zone ia. still fast only exist in one az, availability 95.5% cheapar than standard ia by 20% reduce durability data could get destroyed
+s3 glacier: long term cold storage: retrieval of data can take mintues to hours but the off is very cheap storage
+s3 glacier deep archive: the lowest cost storage : data retrieval time is 12 hours
+
+aws snow family: storage and compute devices used to phisically move dat ain or our the cloud whenn moving data over the internet or proivate connection it to slow difficult or costly 
+ Estos dispositivos se utilizan cuando la transferencia de datos a través de internet es lenta o no es viable debido a limitaciones de ancho de banda, costos o preocupaciones de seguridad.
+
+Storage services: 
+s3: simple storage service: serverless object storage service
+s3 glacier: cold storage service: low cost storage acrhiving and long term backup
+Elastic bone store: persistent block storage serice, 
+Elastic file system:  cloud native nfs file system service.when need to share files between multiple servers
+storage gateway: hybrid cloud storage servive that extends your owns on premise  storage to cloud 
+	File gateway: extends your local storage to aws s3
+	volume gateway: caches yorlocal drives to s3 
+	tape gateway: stores files onto virutal tapes for backing up your files very cost effective logn term storage 
+
+AWS Snow family: storage devices usde to physicalle migrate large amounts of data to the cloud:
+snowball and snowball edge: brifcase size data storages devices 50-80TB
+snow mobile: 100PB aaaa
+snowball: 8TB 
+
+AWS backup: managed backiup service, across multiple aws services you create the backup plans 
+cloud endure disaster recovery : continuesly replicates your machines into low cost staging area 
+aws fsx highly performant file system 
+
+data warehouse: relational datastore designed for analytic workloads is generally column oriented data store companies wil ave terabytes and millioms of rows of data they need a wfat way to ble able to produce analytis reports
+data warehouse generally perform agregration is grouping data finding total, average, sum etc,
+are sesigned to be hot that means return query really fast 
+data warehouse consume for rdb on regular basis 
+
+key value store: non relational datbaase that uses a key value method to store data, key values stores are dumb and fast, dumb : normal ,easy:
+unique key, and can resemble tabular data 
+
+document store: is a type os nosql databse that stores document, a document could be xml but more like json or json likes
+componentes are related to relational database tables - collection, rows- documents, columns-fields, indexes-indexes, joinsembedding and linkin
+
+
+
+NO SQL Database service:
+Dynamo DB: serverless nosql key/value and oducment database: it is design to sacel billion of record with guaranteed consistent data is a flagship database service is cost effective and very fast
+2019 amazon migrate to dynamoDB they had 7500 oragle db and 75 PB of data, with dynanmo db they reduce the cost by 605 and reduce latency by 40%
+when we want a massively sacalabe database
+
+documentdb is a nosql document database that is mongodb compatbiel, when you wantmongodb as a database
+amazon keypsaces is fully managed apache cassandra database. when you want to uye apache casandra

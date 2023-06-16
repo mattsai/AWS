@@ -1,0 +1,214 @@
+Digital signatures and signing:
+mathematical scheme fr verifying the authenticity of digital messages or documents 
+a digital signature give us tamper evidence
+dis someone mess(modify) the data, is this data not from the expected sender
+3 algorithms for digital signatures. 
+key generation :  generates a public and private key
+signing : the process of generating a digital signature with a private key and inputted message
+signing verification: verify the authencity of the message with  apublic key
+SSH uses a public and private key to authorize remore aces intoa remote machine eg VM its common to use RSA
+ssk-keygen is well known command to generate public and private key
+ssh-keygen -t rsa 
+
+in tansir vs at rest encryption:
+data is secure when moving between locations algorithms: tls, ssl
+encryotion at rest: data is secure when residing on storage or within a database :algorithms aws, rsa
+TLS: transport layer security
+encryption protocol for daata integrity between two or more communicating computer applications tls 1.2 and 1.3 is the current best practice
+
+SSL:: secure socket layers
+encryton protocol for data integrity between two or more communication compute rapplication 
+1,2,3 deprecated : 
+
+Compliance programs: set internal policies and procedures of a company to comply with laws rules and regulations or to uphold business reputation.
+Health insureance portbility and accountability act
+the payment card industry data security standard 
+when you want to sell things online and oyu need to handle credit card information
+
+ISO, internation organization for standardization / International electrotechnical comission 
+virutal/hardware things, 27o1- control implemtnation guidance, 27017  clodu security, 27701 privacy information
+
+SOC System and organization controls: SOC 1-18 stanrad and report on the ffectiveness of intenral conrtols at service organization 
+PCI DSS paymend card industry data security standard , set of security stanrds designed to ensure that all companies that aceept process store or transmit credit card informaton maintain a secure nevironment 
+FIPS federal information processing standard FIPS 140-2
+US and canada government stanrda that specifies the security requirements for cryptographic modules that protect sensitive informations
+PHIPA Peronsla health information protection act : regultes patint protectec health information
+HIPAA Health insurance Portability and accountability act  us federal laws regulates patint protect healthinformation
+CSA Clodu security alliance : independent third party assesment of a cloud providers scurity 
+fedRAMP:  federal risk authorization and amnagement progrma: government stardized approach to security authorization for cloud service offerings
+CJIS Criminal justice information services : any us state or local agency that wants to access the fbi cjis database is requried to adhere to the cjis secuirty policy
+GDPR General data protection regulation :european privacy law imposes new roles on companies, thta collect and analyze data teid to eu residents.
+
+Pen testing:authorized simulated cyberattack on a computer system, performed to evalaute security of the system
+prohibited: dns zone walking via amzon route 53, ddos simulation testint policy, dos, ddos distributed denial ofservice, simulated dos simulated ddos 
+port flooding protocol flooding 
+for other simulated events you will need yo submit a request to aws a reply could take up to 7 days 
+
+aws artifact: self server portal for on demand access to aws compliance reports 
+aws inspector: 
+hardening: act of eliminating as many security risk as possible, hardening is common for virtual macines where yo run a collection of security checks known a s security benchmark
+aws inspectr runs a security benchmark agains specifig ec2 instance
+can perform both network and hsot assessments 
+-install aws agent on your ec2 instances, run assessment for your assessment target 
+one very popular benchmark yoy can run is by CIS which has 699 checks (CIS, center for internet security ) 
+
+DDos: distributed denial of service: malicious attempt to disrupt normal traffic by flooding a website with large amounts of fake traffic 
+AWS network
+AWS Shield: is a managed ddos distributed denial of service 
+protection servie that safeguards applications running on aws 
+When you route your traffic through Route53 or CloudFront you are using AWS Shiueld standard 
+protect oyu agains layer 3,4,7 
+7 application 4 transport 3 network 
+2 plans for shield
+standard-free 
+protetion agains most common ddos attacks, aces to tools and best practices to build a ddos resilient architecture 
+automatically available on all aws services 
+
+shield advance: 3000usd/y
+additional protection against larger and more sophisticated attacks 
+avaialbe on : R53, CF, ELB, AWS Global accelerator, elastic ip
+notable features: visibility and reporting onlayer 3,4,7 
+acces to team and support wiht business or enterprise support 
+both plans integrate with aws web application firewall, to give your layer 7 aplication protection 
+AWS Guard duty: 
+ids/ips:  intrusion detection system, and intrusion protection system
+a device or software application that monitors a network or systems for malicious activity or policy violations
+GuardDuty: is a threat detection service that continuosly monitors for malicious, suspicious activity and unauthorized behaviour. it uses ML to analyze the following aws logs : clodutrail , vpc flow logs, dns logs 
+A Macie: fully managed service that continuosly monitors S3 data access activity for anomalies, and generates detailed alerts when it detects risk of unauthorized access or inadvertent data leaks 
+macie: works by uusing ML to analyze  your Cloudtraillogs
+alerts: aonnymized access, config compliacne, credential loss, file hosting, ransomware, suspicious access
+macie will identify your most ar tisk users which could lead to a compromise 
+
+aws vpn: lets you establish a secure and private tunnel from your network or device to the aws global network 
+aws site so site vpn : connect on premises network office site to VPC
+aws client vpn : connect users to aws or on premises networks
+
+IPsec Internet protoocl security: secure network protocol authenticates and encrypts the packets of data to provide secure encrypted communication between two computers over an internet protocol network 
+its used in VPNs virtual private networks 
+
+aws WAF web application firewall protect your web applicationfrom common web exploits 	
+write your own rules to allow or deny traffic 
+use ruleset from a trusted aws sercuirty partnet in the aws waf rules marketplace
+waf can eb atached to either cloufront or an application load balancer  
+protect web application from attacks covered in the OWASP top 1 most dangerous attacks:
+open web applicatin security project 
+1.- injection
+2.- broken authentication
+3.- sensitive data expuse
+4. xml external entities
+5.- borkena ccess contorl
+6.- security misconfiurations
+7.-cross site scripting
+8.- insecure deserialization
+9.- using components wit  known vulnerabilities 
+10.- insufficient loging and moniroting 
+
+Hardware security module: piece of hardware designed to store encryption keys hold keys in memory and never write them to disk
+follows FIPS federal informatio processing standard : 
+HMS that are multi tenant are FIPS 104-2 level 2 compliant multiple customers virtually isolated on a hsm  : AWS KMS
+HSM that are single tenant fips 140-level3 compliant single customer ona  a dedicatd HSM :  AWS Cloud HSM
+
+AWS KMS: key management service: makes it easy for you to create ad control encyption keys ysed to encrypt your data 
+multi tenant HSM manyw aws are integrated to use kms to encrypt your data with simple checkbox 
+Envole encryption:
+encrypt data your data is protected but you have to protectyout encryption key
+when u encrypt your data key with a master key as an additional layer of security 
+(i have my data i use this key -> so i need to protect this key so i use another key to encrypt this key and store that master key into kms  key managent service)
+Cloud HSM: single tenant hsm as aservice  that automates hardware privisioning software patching  high availabilty and backup
+enables generate and use your encryption keys on FIPS 140-4 level 3 
+can transfer keys to otehr commercial hsm solutions to make it easy to migrate keys on or off aws 
+configure aws kms to use aws cloudhsm cluster as customer key 
+
+Know your initialisms : 
+IAM : identity acces maangement
+S3 Simple storage service
+SWF: simple workflow service
+SNS simple notification serice
+SQS simple queue service
+SES Simple email service
+SSM Simple systems manager
+RDS Relational database
+VPC virtual private cloud
+VPN virtual private network
+CFN CloudFormation
+WAF Web applciation firewall
+MQ Amazon ActiveMQ
+ASG Auto Scaling Group
+TAM Technica Account Manager
+ELB Elastic load balancer 
+ALB Application lkoad balancer
+NLB Network Load Balancer
+GWLB GateWay Load Balancer
+CLB Classic load balancer
+EC2 Elastic cloud compiute
+ECS Elastic cotainer service
+ecr elastic continer repository
+EBS Elastib block storage
+EFS Elastic file storage 
+EMR Elastic MapRdude
+EB Elastic Beanstalk
+ES ElasticSearch
+EKS Ekastic Kubernetes Service
+MSK Managed Kafka Service
+RAM AWS Resourse Managaer 
+acm aMAZON CERTIFICATE MANAGER
+PoLP Principle of least privilege 
+IoT Internet of things 
+RI Reserver instances 
+
+aws config vs aws appconfig
+aws config: governance tol for compliance as code CoC
+can create rules that will check to see fi resources are configured the way you expect them to be
+if a resources drifts from the expected configuration you are notified or aws config can auto remediate -correct- the configuration
+
+AWS Appconfig: autoamte process of deplying applications configuration ->variables<- changes to your webapps
+you can write a validator to ensure the changed variable will not break your web app
+
+SNS vs SQS: botj connect apps via meesages
+SNS:
+pass alongs messages eg: pubsub
+send notifications to subscribers of topics via protocol : http,email,sqs,sms
+is generally used for sending plain text emails is triggered via othe aws services, the betst example of this is billing alarms
+can retry sending in case of failure for https, good for webooks, simple itnernal emails, triggering lambda functions
+ 
+SQS:
+queue up messages, guaranteed delivery
+places messages into a queue apps  pull queue using aws sdk 
+can retaina message for up to 14 daysm sen them in sequential or in paralell
+really good for delayed tasksk queueing up emails, tabbitmq
+
+SNS vs SQS vs PinPoint vs Workmail:
+they all send emails
+
+SNS: notification to subscribers of topics
+SES: transactional email - emails that should be triggered based on in-app actions: signup, reset password, invoice , sends html emails sns cannot
+PinPoint: Promotional emails emails for marketing . email campaings, segment your contacs 
+Workmail: email web client similat go gmail and outlook create company emails, read, write adn send emails from a web client within aws management console 
+
+Amazon Inspector vs AWS Trusted advisor: both are scurity tools and the both perform audits
+Inspector:
+audits a single EC2 isntance that you have selected, generates report from long list of security checks i.e: 699 checks
+Trusted advisor: doesn't generate out a pdf report
+gives a holistic view of recommecntions across multiple service and best practices, eg: you have open ports on these security groups
+-you should enable mfa on your root acc-
+
+Connect named services:
+Direct Connect: dedicated fiber optics connection from your datacenter to aws , intender for large enterprises, if you need secure connection you need to apply aws vpn connection on top fo direct connect
+Amazon connect: call center as aservice, get a tol free number
+Media connect: new version of elastic transcoders convers videos to different video types
+
+elastic transcoder vs media convert: both services transcodes videos
+elastic transcoder : old way: transcodes videos to straming formarts
+aws elemantal mediaconvert: the new way :  more robust transcoding service that can peform various operations during transcoding 
+overlays images, insert video clibs , robus ui 
+
+Amazon artifact vs amazon inspector: both compile out PDFs
+artifact: why an enterprise trust aws,, generates securirt report based on global compliance frameworks as: SOC service organizationcontrol, PCI, Payment card industry
+inspector: how do we know this EC2 instance is secure-prove it runs a script that analyzes you ec2 instnace then generates a pdf report telling you which security checks passed
+
+ELB Variants: 
+ELB: MAIN SERVICE has 4 different types of possible load balancer ALB
+ALB : layer 7 https, routing rules, create rules to change routing based on information foudn ina http/s request , can attack AWS WAF 
+NLB: LAYER 3,4 TCP AND UP extreme performance required for TCP and TLS traffic, capable of handling millions of requests per second while maintaning ultra low latencies, sudden and volatile traffic patterns while using static ip addres per AZ
+GWLB : when you need to deploy fleet of third party vitual appliancs support GENEVE 
+CLB: layer 3,4,7 intended for apps that wew built within the ec2 classic network does not use target groups 	retires on aug 15 2022
